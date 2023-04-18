@@ -49,12 +49,9 @@ module.exports = {
     const canvas = Canvas.createCanvas(1200, 400);
     const ctx = canvas.getContext("2d");
     const background = await Canvas.loadImage(`${corazon_porcentaje}`);
-    const heart = await Canvas.loadImage(
-      "https://static.vecteezy.com/system/resources/thumbnails/008/470/226/small_2x/heart-anime-cute-character-cartoon-model-emotion-illustration-clipart-drawing-kawaii-manga-design-idea-art-free-png.png"
-    );
-    let myAvatar = interaction.member.displayAvatarURL({ extension: "jpg" });
+    let myAvatar = interaction.member.displayAvatarURL({ extension: "png" });
     myAvatar = await Canvas.loadImage(myAvatar);
-    let mentionAvatar = target.displayAvatarURL({ extension: "jpg" });
+    let mentionAvatar = target.displayAvatarURL({ extension: "png" });
     mentionAvatar = await Canvas.loadImage(mentionAvatar);
     //dibujar el fondo
     ctx.save();
@@ -95,7 +92,7 @@ module.exports = {
     ctx.font = "80px Arial";
     ctx.fillText(random, 600, 200);
 
-    const file = new AttachmentBuilder(canvas.toBuffer("image/jpeg"), {
+    const file = new AttachmentBuilder(await canvas.encode("png"), {
       name: "y2XDHuy.png",
     });
 

@@ -3,6 +3,7 @@ const {
   SlashCommandBuilder,
   EmbedBuilder,
   Client,
+  AttachmentBuilder,
 } = require("discord.js");
 module.exports = {
   developer: false,
@@ -21,149 +22,54 @@ module.exports = {
    * @param {Client} client
    */
   async execute(interaction, client) {
-    const Target = interaction.options.getUser("user");
+    const file = new AttachmentBuilder("Images/trebol.png", {
+      name: `trebol.png`,
+    });
+    const Target = interaction.options.getUser("user") || interaction.user;
     let random = Math.floor(Math.random() * 100);
-    // esto hará que cuando el usuario con esa id use el comando sea el valor de dentro
+    let nota;
     if (random >= 1 && random <= 25) {
-      const embed = new EmbedBuilder()
-        .setAuthor({
-          name: client.user.username,
-          iconURL: client.user.displayAvatarURL(),
-        })
-        .setDescription(
-          `${
-            Target || interaction.member
-          } tiene: \n\n **${random}** % suerte, con esa suerte no saldría de casa <:emojicrying:1078356659732238466> `
-        )
-        .setColor("#a6ffbe")
-        .setTimestamp(Date.now())
-        .setThumbnail(
-          "https://cdn.pixabay.com/photo/2013/07/12/17/20/leaf-152047_960_720.png"
-        )
-        .setFooter({
-          text: `Solicitado por: ${interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL(),
-        });
-      await interaction.reply({ embeds: [embed] });
+      nota =
+        "Con esa suerte no saldría de casa <:emojicrying:1078356659732238466>";
     } else if (random <= 50 && random >= 26) {
-      const embed = new EmbedBuilder()
-        .setAuthor({
-          name: client.user.username,
-          iconURL: client.user.displayAvatarURL(),
-        })
-        .setDescription(
-          `${
-            Target || interaction.member
-          } tiene: \n\n **${random}** % suerte, no está tan mal  <:sharkblanketcry:1078731389760979054> `
-        )
-        .setColor("#a6ffbe")
-        .setTimestamp(Date.now())
-        .setThumbnail(
-          "https://cdn.pixabay.com/photo/2013/07/12/17/20/leaf-152047_960_720.png"
-        )
-        .setFooter({
-          text: `Solicitado por: ${interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL(),
-        });
-      await interaction.reply({ embeds: [embed] });
+      nota = "No está tan mal <:sharkblanketcry:1078731389760979054>";
     } else if (random <= 75 && random >= 51) {
-      const embed = new EmbedBuilder()
-        .setAuthor({
-          name: client.user.username,
-          iconURL: client.user.displayAvatarURL(),
-        })
-        .setDescription(
-          `${
-            Target || interaction.member
-          } tiene: \n\n **${random}** % suerte, ojoo, quizás hoy es tu día de suerte! <:woahsunglassesblush:1078356656250957875> `
-        )
-        .setColor("#a6ffbe")
-        .setTimestamp(Date.now())
-        .setThumbnail(
-          "https://cdn.pixabay.com/photo/2013/07/12/17/20/leaf-152047_960_720.png"
-        )
-        .setFooter({
-          text: `Solicitado por: ${interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL(),
-        });
-      await interaction.reply({ embeds: [embed] });
+      nota =
+        "Ojoo, quizás hoy es tu día de suerte! <:woahsunglassesblush:1078356656250957875>";
     } else if (random <= 99 && random >= 76) {
-      const embed = new EmbedBuilder()
-        .setAuthor({
-          name: client.user.username,
-          iconURL: client.user.displayAvatarURL(),
-        })
-        .setDescription(
-          `${
-            Target || interaction.member
-          } tiene: \n\n **${random}** % suerte, deberías de hechar loteria? <:huh:1078356658524278784> `
-        )
-        .setColor("#a6ffbe")
-        .setTimestamp(Date.now())
-        .setThumbnail(
-          "https://cdn.pixabay.com/photo/2013/07/12/17/20/leaf-152047_960_720.png"
-        )
-        .setFooter({
-          text: `Solicitado por: ${interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL(),
-        });
-      await interaction.reply({ embeds: [embed] });
+      nota = "¿Deberías de echar loteria? <:huh:1078356658524278784>";
     } else if (random == 0) {
-      const embed = new EmbedBuilder()
-        .setAuthor({
-          name: client.user.username,
-          iconURL: client.user.displayAvatarURL(),
-        })
-        .setDescription(
-          `${
-            Target || interaction.member
-          } tiene: \n\n **${random}** % suerte, a veces es mejor pasar al siguiente día <:sadness:1078733065679024170> `
-        )
-        .setColor("#000000")
-        .setTimestamp(Date.now())
-        .setThumbnail(
-          "https://cdn.pixabay.com/photo/2013/07/12/17/20/leaf-152047_960_720.png"
-        )
-        .setFooter({
-          text: `Solicitado por: ${interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL(),
-        });
-      await interaction.reply({ embeds: [embed] });
+      nota =
+        "A veces es mejor pasar al siguien día <:sadness:1097984046182699078>";
     } else if (random == 100) {
-      const embed = new EmbedBuilder()
-        .setAuthor({
-          name: client.user.username,
-          iconURL: client.user.displayAvatarURL(),
-        })
-        .setDescription(
-          `${
-            Target || interaction.member
-          } tiene: \n\n **${random}** % suerte, ves a tirar loteria YA!  <:gigachad:1078733389869359276> `
-        )
-        .setColor("#a6ffbe")
-        .setTimestamp(Date.now())
-        .setThumbnail(
-          "https://cdn.pixabay.com/photo/2013/07/12/17/20/leaf-152047_960_720.png"
-        )
-        .setFooter({
-          text: `Solicitado por: ${interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL(),
-        });
-      await interaction.reply({ embeds: [embed] });
+      nota = "¡Ves a tirar loteria YA!  <:gigachad:1078733389869359276>";
     } else {
-      const embed = new EmbedBuilder()
-        .setAuthor({
-          name: client.user.username,
-          iconURL: client.user.displayAvatarURL(),
-        })
-        .setDescription("Algo ha ido mal")
-        .setColor("#a6ffbe")
-        .setTimestamp(Date.now())
-        .setFooter({
-          text: `Solicitado por: ${interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL(),
-        });
-      await interaction.reply({ embeds: [embed] });
     }
+    const embed = new EmbedBuilder()
+      .setAuthor({
+        name: `Comando Suerte`,
+        iconURL: client.user.displayAvatarURL(),
+      })
+      .setTitle(
+        `<:flecha:1097547930237407242>¿Qué suerte tiene ${Target.username}? <:SagiriShy:1097980889729863801> `
+      )
+      .addFields({
+        name: `• Porcentaje`,
+        value: `> ${
+          Target || interaction.member
+        } tiene **${random}%** suerte <a:HeartsBubblePink:1097980344818470985>  `,
+      })
+      .addFields({
+        name: `• Nota`,
+        value: `> ${nota}`,
+      })
+      .setColor("#cc96c1")
+      .setTimestamp(Date.now())
+      .setThumbnail("attachment://trebol.png")
+      .setFooter({
+        text: `Solicitado por: ${interaction.user.username}`,
+        iconURL: interaction.user.displayAvatarURL(),
+      });
+    await interaction.reply({ embeds: [embed], files: [file] });
   },
 };

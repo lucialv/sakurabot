@@ -33,7 +33,7 @@ module.exports = {
       .setDescription("Información útil del bot.")
       .addFields({
         name: "Nombre del bot",
-        value: "Sharky",
+        value: "Sakura Tree",
         inline: true,
       })
       .addFields({

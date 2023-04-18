@@ -130,7 +130,7 @@ module.exports = {
           iconURL: client.user.displayAvatarURL(),
         })
         .setDescription(
-          `Soy un bot, no me puedo medir el pito <:ghostHeart:1097558572872765480>`
+          `Soy un bot, no me puedo medir el pito <:ghostHeart:1097558572872765480>` //parece que esto no me come el
         )
         .setColor("#cc96c1")
         .setTimestamp(Date.now())
