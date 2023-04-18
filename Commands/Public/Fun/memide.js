@@ -3,6 +3,7 @@ const {
   SlashCommandBuilder,
   EmbedBuilder,
   Client,
+  AttachmentBuilder,
 } = require("discord.js");
 module.exports = {
   developer: false,
@@ -21,145 +22,52 @@ module.exports = {
    * @param {Client} client
    */
   async execute(interaction, client) {
-    const Target = interaction.options.getUser("user");
+    const Target = interaction.options.getUser("user") || interaction.user;
     let random = Math.floor(Math.random() * 30);
-    if (
-      (interaction.member.id == 997571433280577656 && !Target) ||
-      (Target && Target.id == 997571433280577656)
-    ) {
-      random = 0;
+    let nota;
+    const file = new AttachmentBuilder("Images/banana.png", {
+      name: `banana.png`,
+    });
+    if (Target.id == "997571433280577656") {
+      random = Math.floor(Math.random() * 30);
+      // random = 0;
     }
-    if (
-      (interaction.member.id == 1019405569385312297 && !Target) ||
-      (Target && Target.id == 1019405569385312297)
-    ) {
-      random = 1;
-    }
-    if (Target && Target.id == 1060206122620960768) {
-      random = 78;
-    }
-
     if (random >= 1 && random <= 9) {
-      const embed = new EmbedBuilder()
-        .setAuthor({
-          name: client.user.username,
-          iconURL: client.user.displayAvatarURL(),
-        })
-        .setDescription(
-          `A ${
-            Target || interaction.member
-          } le mide: \n\n **${random}** cm, tranqui, el tamaño no importa <:emojicrying:1078356659732238466> `
-        )
-        .setColor("#ff0000")
-        .setTimestamp(Date.now())
-        .setThumbnail(
-          "https://images.vexels.com/media/users/3/230811/isolated/preview/752f6ac978c2ce839303371eaa383478-dibujos-animados-de-platano-a-medio-pelar.png"
-        )
-        .setFooter({
-          text: `Solicitado por: ${interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL(),
-        });
-      await interaction.reply({ embeds: [embed] });
+      nota = "Tranqui, el tamaño no importa <:emojicrying:1078356659732238466>";
     } else if (random <= 19 && random >= 10) {
-      const embed = new EmbedBuilder()
-        .setAuthor({
-          name: client.user.username,
-          iconURL: client.user.displayAvatarURL(),
-        })
-        .setDescription(
-          `A ${
-            Target || interaction.member
-          } le mide: \n\n **${random}** cm, no está mal <:woahsunglassesblush:1078356656250957875>`
-        )
-        .setColor("#ffffb3")
-        .setTimestamp(Date.now())
-        .setThumbnail(
-          "https://images.vexels.com/media/users/3/230811/isolated/preview/752f6ac978c2ce839303371eaa383478-dibujos-animados-de-platano-a-medio-pelar.png"
-        )
-        .setFooter({
-          text: `Solicitado por: ${interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL(),
-        });
-      await interaction.reply({ embeds: [embed] });
+      nota = "No está mal <:woahsunglassesblush:1078356656250957875>";
+    } else if (random <= 29 && random >= 20) {
+      nota = "Menuda locura <:huh:1097983950485467246>";
     } else if (random == 0) {
-      const embed = new EmbedBuilder()
-        .setAuthor({
-          name: client.user.username,
-          iconURL: client.user.displayAvatarURL(),
-        })
-        .setDescription(
-          `A ${
-            Target || interaction.member
-          } le mide: \n\n **${random}** cm, ¿no será una chica?`
-        )
-        .setColor("#f2c3ff")
-        .setTimestamp(Date.now())
-        .setThumbnail(
-          "https://images.vexels.com/media/users/3/230811/isolated/preview/752f6ac978c2ce839303371eaa383478-dibujos-animados-de-platano-a-medio-pelar.png"
-        )
-        .setFooter({
-          text: `Solicitado por: ${interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL(),
-        });
-      await interaction.reply({ embeds: [embed] });
+      nota = "¿No será una chica? <a:RainbowPls:1098012838905270293>";
     } else if (random == 30) {
-      const embed = new EmbedBuilder()
-        .setAuthor({
-          name: client.user.username,
-          iconURL: client.user.displayAvatarURL(),
-        })
-        .setDescription(
-          `A ${
-            Target || interaction.member
-          } le mide: \n\n **${random}** cm, DIOOOSSS <:huh:1078356658524278784>`
-        )
-        .setColor("#ffffb3")
-        .setTimestamp(Date.now())
-        .setThumbnail(
-          "https://images.vexels.com/media/users/3/230811/isolated/preview/752f6ac978c2ce839303371eaa383478-dibujos-animados-de-platano-a-medio-pelar.png"
-        )
-        .setFooter({
-          text: `Solicitado por: ${interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL(),
-        });
-      await interaction.reply({ embeds: [embed] });
-    } else if (random == 78) {
-      const embed = new EmbedBuilder()
-        .setAuthor({
-          name: client.user.username,
-          iconURL: client.user.displayAvatarURL(),
-        })
-        .setDescription(
-          `Soy un bot, no me puedo medir el pito <:ghostHeart:1097558572872765480>` //parece que esto no me come el
-        )
-        .setColor("#cc96c1")
-        .setTimestamp(Date.now())
-        .setFooter({
-          text: `Solicitado por: ${interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL(),
-        });
-      await interaction.reply({ embeds: [embed] });
-    } else {
-      const embed = new EmbedBuilder()
-        .setAuthor({
-          name: client.user.username,
-          iconURL: client.user.displayAvatarURL(),
-        })
-        .setDescription(
-          `A ${
-            Target || interaction.member
-          } le mide: \n\n **${random}** cm, vaya titán <:huh:1078356658524278784>`
-        )
-        .setColor("#a6ffbe")
-        .setTimestamp(Date.now())
-        .setThumbnail(
-          "https://images.vexels.com/media/users/3/230811/isolated/preview/752f6ac978c2ce839303371eaa383478-dibujos-animados-de-platano-a-medio-pelar.png"
-        )
-        .setFooter({
-          text: `Solicitado por: ${interaction.user.username}`,
-          iconURL: interaction.user.displayAvatarURL(),
-        });
-      await interaction.reply({ embeds: [embed] });
+      nota = "DIOOOSSS, TREMENDO TITÁN <:huh:1078356658524278784>";
     }
+    const embed = new EmbedBuilder()
+      .setAuthor({
+        name: `Comando MeMide`,
+        iconURL: client.user.displayAvatarURL(),
+      })
+      .setTitle(
+        `<:flecha:1097547930237407242>¿Cuánto le mide a ${Target.username}? <:SagiriShy:1097980889729863801> `
+      )
+      .addFields({
+        name: `• Longitud`,
+        value: `> A ${
+          Target || interaction.member
+        } le mide **${random}** cm <a:HeartsBubblePink:1097980344818470985>  `,
+      })
+      .addFields({
+        name: `• Nota`,
+        value: `> ${nota}`,
+      })
+      .setColor("#cc96c1")
+      .setTimestamp(Date.now())
+      .setThumbnail("attachment://banana.png")
+      .setFooter({
+        text: `Solicitado por: ${interaction.user.username}`,
+        iconURL: interaction.user.displayAvatarURL(),
+      });
+    await interaction.reply({ embeds: [embed], files: [file] });
   },
 };

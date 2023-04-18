@@ -6,6 +6,7 @@ const {
 } = require("discord.js");
 
 module.exports = {
+  developer: true,
   data: new SlashCommandBuilder()
     .setName("emit")
     .setDescription("Simular añadir/remover Events.")

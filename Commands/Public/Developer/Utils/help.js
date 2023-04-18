@@ -7,7 +7,6 @@ const {
 } = require("discord.js");
 
 module.exports = {
-  developer: true,
   data: new SlashCommandBuilder()
     .setName("help")
     .setDescription("¡Muestra los comandos disponibles del bot!"),
@@ -42,7 +41,7 @@ module.exports = {
       })
       .addFields({
         name: "Útil",
-        value: "<:flecha:1097547930237407242> `memberinfo`",
+        value: "<:flecha:1097547930237407242> `memberinfo`, `botinfo`",
         inline: false,
       })
       .addFields({

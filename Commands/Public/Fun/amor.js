@@ -34,17 +34,17 @@ module.exports = {
     ) {
       random = `100%`;
     }
-    let corazon_porcentaje = "https://i.imgur.com/y2XDHuy.png";
+    let corazon_porcentaje = "https://i.imgur.com/p41nHim.png";
     if (random >= 1 && random <= 25) {
-      corazon_porcentaje = "https://i.imgur.com/y2XDHuy.png";
+      corazon_porcentaje = "https://i.imgur.com/p41nHim.png";
     } else if (random <= 50 && random >= 26) {
-      corazon_porcentaje = "https://i.imgur.com/y2XDHuy.png";
+      corazon_porcentaje = "https://i.imgur.com/p41nHim.png";
     } else if (random <= 75 && random >= 51) {
-      corazon_porcentaje = "https://i.imgur.com/y2XDHuy.png";
+      corazon_porcentaje = "https://i.imgur.com/p41nHim.png";
     } else if (random <= 99 && random >= 76) {
-      corazon_porcentaje = "https://i.imgur.com/y2XDHuy.png";
+      corazon_porcentaje = "https://i.imgur.com/p41nHim.png";
     } else {
-      corazon_porcentaje = "https://i.imgur.com/y2XDHuy.png";
+      corazon_porcentaje = "https://i.imgur.com/p41nHim.png";
     }
     const canvas = Canvas.createCanvas(1200, 400);
     const ctx = canvas.getContext("2d");
@@ -93,7 +93,7 @@ module.exports = {
     ctx.fillText(random, 600, 200);
 
     const file = new AttachmentBuilder(await canvas.encode("png"), {
-      name: "y2XDHuy.png",
+      name: "p41nHim.png",
     });
 
     interaction.reply({ files: [file] });

@@ -40,6 +40,7 @@ module.exports = {
       nota =
         "Ojalá fueras un armario para empotrarte contra la pared <:ghostHeart:1097558572872765480>";
     } else {
+      nota = "Quizás ha habido un error";
     }
     const embed = new EmbedBuilder()
       .setAuthor({

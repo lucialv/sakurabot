@@ -3,11 +3,10 @@ const {
   SlashCommandBuilder,
   EmbedBuilder,
   Client,
-  Discord,
+  AttachmentBuilder,
 } = require("discord.js");
 
 module.exports = {
-  developer: true,
   data: new SlashCommandBuilder()
     .setName("botinfo")
     .setDescription("¡Te da información acerca del bot!"),
@@ -17,8 +16,11 @@ module.exports = {
    * @param {Client} client
    */
   async execute(interaction, client) {
+    const file = new AttachmentBuilder("Images/sakuratree.png", {
+      name: `sakuratree.png`,
+    });
     const embed = new EmbedBuilder()
-      .setColor("#a6ffbe")
+      .setColor("#cc96c1")
       .setTitle("Bot Info")
       .setAuthor({
         name: client.user.username,
@@ -27,10 +29,10 @@ module.exports = {
       .setThumbnail(
         "https://cdn.discordapp.com/emojis/726893195052711948.gif?size=40"
       )
-      .setImage(
-        "https://cdn.discordapp.com/attachments/1057344339719753748/1077207254459228180/ab.png"
+      .setImage("attachment://sakuratree.png")
+      .setDescription(
+        "Información útil del bot. <a:HeartsBubblePink:1097980344818470985>"
       )
-      .setDescription("Información útil del bot.")
       .addFields({
         name: "Nombre del bot",
         value: "Sakura Tree",
@@ -53,7 +55,7 @@ module.exports = {
       })
       .addFields({
         name: "Server",
-        value: `[Shark ESP](https://discord.gg/FqgAkFVZ8j)`,
+        value: `[Sakura Tree](https://discord.gg/a628r44pM7)`,
         inline: true,
       })
       .addFields({
@@ -67,6 +69,6 @@ module.exports = {
         iconURL: interaction.user.displayAvatarURL(),
       });
 
-    await interaction.reply({ embeds: [embed] });
+    await interaction.reply({ embeds: [embed], files: [file] });
   },
 };
