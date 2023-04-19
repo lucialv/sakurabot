@@ -8,6 +8,7 @@ const {
 } = require("discord.js");
 
 module.exports = {
+  developer: true,
   data: new SlashCommandBuilder()
     .setName("sugerir")
     .setDescription("Crear una sugerencia.")

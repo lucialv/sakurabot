@@ -7,8 +7,8 @@ const {
 module.exports = {
   developer: false,
   data: new SlashCommandBuilder()
-    .setName("atractivo")
-    .setDescription("Evalua el atractivo de una persona")
+    .setName("camello")
+    .setDescription("Evalua ela cantidad de camellos que vale una persona")
     .addUserOption((options) =>
       options
         .setName("user")
@@ -44,17 +44,17 @@ module.exports = {
     }
     const embed = new EmbedBuilder()
       .setAuthor({
-        name: `Comando Atractivo`,
+        name: `Comando camello`,
         iconURL: client.user.displayAvatarURL(),
       })
       .setTitle(
-        `<:flecha:1097547930237407242>¿Qué atractivo/a es ${Target.username}? <:SagiriShy:1097980889729863801> `
+        `<:flecha:1097547930237407242>¿Cuántos camellos vale ${Target.username}? <:SagiriShy:1097980889729863801> `
       )
       .addFields({
-        name: `• Porcentaje`,
+        name: `• Cantidad`,
         value: `> ${
           Target || interaction.member
-        } es **${random}%** atractivo/a <a:HeartsBubblePink:1097980344818470985>  `,
+        } vale **${random}** camellos <a:HeartsBubblePink:1097980344818470985>  `,
       })
       .addFields({
         name: `• Nota`,
@@ -63,7 +63,7 @@ module.exports = {
       .setColor("#cc96c1")
       .setTimestamp(Date.now())
       .setThumbnail(
-        "https://i.pinimg.com/originals/3e/1b/d8/3e1bd8319f6ac80538264f368ecdd6c6.png"
+        "https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f42b.png"
       )
       .setFooter({
         text: `Solicitado por: ${interaction.user.username}`,

@@ -7,8 +7,8 @@ const {
 module.exports = {
   developer: false,
   data: new SlashCommandBuilder()
-    .setName("atractivo")
-    .setDescription("Evalua el atractivo de una persona")
+    .setName("hetero")
+    .setDescription("Dice que tan heteroexual es una persona")
     .addUserOption((options) =>
       options
         .setName("user")
@@ -25,36 +25,32 @@ module.exports = {
     let random = Math.floor(Math.random() * 100);
     let nota;
     if (random >= 1 && random <= 25) {
-      nota = "Tus padres no tuvieron suerte <:emojicrying:1097983929241321664>";
+      nota = "Creo que no es hetero.";
     } else if (random <= 50 && random >= 26) {
-      nota =
-        "Hay muchos peces en el mar <:sharkblanketcry:1097984061856813076>";
+      nota = "Quizás es un poco hetero.";
     } else if (random <= 75 && random >= 51) {
-      nota = "No estás nada mal <:woahsunglassesblush:1097983972828528641>";
+      nota = "Creo que debería replantearselo.";
     } else if (random <= 99 && random >= 76) {
-      nota = "¿En tu casa o en la mía? <:huh:1097983950485467246>";
+      nota =
+        "Debería de ir a cambiarse el nombre al sexo contrario. <:huh:1097983950485467246>";
     } else if (random == 0) {
-      nota =
-        "Mi madre diría lávate la boca con jabón, tú mejor lavate la cara <:sadness:1097984046182699078>";
+      nota = "No se por qué, pero creo que no es hetero.";
     } else if (random == 100) {
-      nota =
-        "Ojalá fueras un armario para empotrarte contra la pared <:ghostHeart:1097558572872765480>";
-    } else {
-      nota = "Quizás ha habido un error";
+      nota = "Dicen que viene con sorpresa.";
     }
     const embed = new EmbedBuilder()
       .setAuthor({
-        name: `Comando Atractivo`,
+        name: `Comando hetero`,
         iconURL: client.user.displayAvatarURL(),
       })
       .setTitle(
-        `<:flecha:1097547930237407242>¿Qué atractivo/a es ${Target.username}? <:SagiriShy:1097980889729863801> `
+        `<:flecha:1097547930237407242>¿Qué tan heteroexual es ${Target.username}? <:SagiriShy:1097980889729863801> `
       )
       .addFields({
         name: `• Porcentaje`,
         value: `> ${
           Target || interaction.member
-        } es **${random}%** atractivo/a <a:HeartsBubblePink:1097980344818470985>  `,
+        } es **${random}%** hetero <a:HeartsBubblePink:1097980344818470985>  `,
       })
       .addFields({
         name: `• Nota`,
@@ -63,7 +59,7 @@ module.exports = {
       .setColor("#cc96c1")
       .setTimestamp(Date.now())
       .setThumbnail(
-        "https://i.pinimg.com/originals/3e/1b/d8/3e1bd8319f6ac80538264f368ecdd6c6.png"
+        "https://www.experimenta.es/wp-content/uploads/2019/06/40-aniversario-de-la-bandera-del-orgullo-gay-la-historia-de-su-diseno.jpg"
       )
       .setFooter({
         text: `Solicitado por: ${interaction.user.username}`,

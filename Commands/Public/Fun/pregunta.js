@@ -57,7 +57,7 @@ module.exports = {
         iconURL: client.user.displayAvatarURL(),
       })
       .setTitle(
-        `<:flecha:1097547930237407242> ${Target.username}? Me hace una pregunta... <:SagiriShy:1097980889729863801> `
+        `<:flecha:1097547930237407242> ${Target.username} Me hace una pregunta... <:SagiriShy:1097980889729863801> `
       )
       .addFields({
         name: `• Pregunta`,

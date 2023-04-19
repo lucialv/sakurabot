@@ -36,7 +36,7 @@ module.exports = {
       .addFields({
         name: "Diversión",
         value:
-          "<:flecha:1097547930237407242> `atractivo`, `memide`, `trans`, `pregunta`, `tequiero`, `amor`, `suerte`",
+        "<:flecha:1097547930237407242> `amor`, `atractivo`, `camello`, `hetero`, `homo`, `memide`, `pregunta`, `suerte`, `tequiero`, `trans`",
         inline: false,
       })
       .addFields({
