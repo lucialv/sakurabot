@@ -25,18 +25,23 @@ module.exports = {
     let random = Math.floor(Math.random() * 100);
     let nota;
     if (random >= 1 && random <= 25) {
-      nota = "Creo que no es hetero.";
+      nota =
+        "¡No te preocupes, es normal sentirse atraído por personas de distintos géneros! ¡Sigue siendo tú mismo!";
     } else if (random <= 50 && random >= 26) {
-      nota = "Quizás es un poco hetero.";
+      nota =
+        "¡Eres una persona increíblemente diversa y eso es genial! ¡Explora tus intereses y sé feliz con lo que te hace feliz!";
     } else if (random <= 75 && random >= 51) {
-      nota = "Creo que debería replantearselo.";
+      nota =
+        "¡Eres una persona diversa y eso es genial! Explora tus intereses y sé feliz con lo que te hace feliz. No te preocupes por lo que piensen los demás, solo haz lo que te haga feliz";
     } else if (random <= 99 && random >= 76) {
       nota =
-        "Debería de ir a cambiarse el nombre al sexo contrario. <:huh:1097983950485467246>";
+        "¡Genial! Es maravilloso ser fiel a uno mismo y sentirse atraído por personas de géneros diferentes. ¡Sigue siendo tú mismo y sigue adelante!";
     } else if (random == 0) {
-      nota = "No se por qué, pero creo que no es hetero.";
+      nota =
+        "¡No te preocupes! La orientación sexual es una parte de ti, pero no define quién eres como persona. ¡Sigue siendo increíble tal y como eres!";
     } else if (random == 100) {
-      nota = "Dicen que viene con sorpresa.";
+      nota =
+        "¡Fantástico! Eres una persona única y especial. ¡Sigue siendo fiel a ti mismo y nunca dejes que nadie te diga lo contrario!";
     }
     const embed = new EmbedBuilder()
       .setAuthor({
@@ -59,7 +64,7 @@ module.exports = {
       .setColor("#cc96c1")
       .setTimestamp(Date.now())
       .setThumbnail(
-        "https://www.experimenta.es/wp-content/uploads/2019/06/40-aniversario-de-la-bandera-del-orgullo-gay-la-historia-de-su-diseno.jpg"
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Heterosexual_flag_%28black-grey-white%29.svg/2560px-Heterosexual_flag_%28black-grey-white%29.svg.png"
       )
       .setFooter({
         text: `Solicitado por: ${interaction.user.username}`,

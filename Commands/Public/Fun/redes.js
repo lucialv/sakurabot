@@ -39,7 +39,7 @@ module.exports = {
     await interaction.deferReply();
     const red_social = interaction.options.getString("red");
     const nombre_de_usuario = interaction.options.getString("user");
-    interaction.editreply({
+    interaction.editReply({
       content: `${red_social}: \nUser: ${nombre_de_usuario} \nDiscord Tag: ${interaction.user.tag}`,
     });
   },

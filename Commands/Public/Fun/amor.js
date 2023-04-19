@@ -23,6 +23,7 @@ module.exports = {
    * @param {Client} client
    */
   async execute(interaction, client) {
+    await interaction.deferReply();
     const target = interaction.options.getUser("user");
     let random = `${Math.floor(Math.random() * 100)}%`;
     if (
@@ -96,6 +97,6 @@ module.exports = {
       name: "p41nHim.png",
     });
 
-    interaction.reply({ files: [file] });
+    interaction.editReply({ files: [file] });
   },
 };

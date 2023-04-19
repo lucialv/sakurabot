@@ -1,38 +1,27 @@
-const { ChatInputCommandInteraction } = require("discord.js");
+const { Interaction } = require("discord.js");
 
 module.exports = {
   name: "interactionCreate",
-  /**
-   *
-   * @param {ChatInputCommandInteraction} interaction
-   */
-  execute(interaction, client) {
-    if (!interaction.isChatInputCommand()) return;
+  async execute(interaction, client) {
+    if (!interaction.isCommand()) return;
 
     const command = client.commands.get(interaction.commandName);
-    if (!command)
-      return interaction.reply({
-        content: "Este comando está desactualizado!",
-        ephemeral: true,
-      });
 
+    if (!command) return;
     if (command.developer && interaction.user.id !== "997571433280577656")
       return interaction.reply({
         content: "Este comando solo está disponible para la desarrolladora!",
         ephemeral: true,
       });
 
-    const subCommand = interaction.options.getSubcommand(false);
-    if (subCommand) {
-      const subCommandFile = client.subCommands.get(
-        `${interaction.commandName}.${subCommand}`
-      );
-      if (!subCommandFile)
-        return interaction.reply({
-          content: "Este comando está desactualizado!",
-          ephemeral: true,
-        });
-      subCommandFile.execute(interaction, client);
-    } else command.execute(interaction, client);
+    try {
+      await command.execute(interaction, client);
+    } catch (error) {
+      console.log(error);
+      await interaction.reply({
+        content: "There was an error while executing this command!",
+        ephemeral: true,
+      });
+    }
   },
 };

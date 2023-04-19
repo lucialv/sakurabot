@@ -1,5 +1,5 @@
 const { ChatInputCommandInteraction } = require("discord.js");
-const { loadEvents } = require("../../../../Handlers/eventHandler");
+const { loadEvents } = require("../../../Handlers/eventHandler");
 
 module.exports = {
   subCommand: "reload.events",

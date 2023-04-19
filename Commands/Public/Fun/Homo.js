@@ -25,18 +25,23 @@ module.exports = {
     let random = Math.floor(Math.random() * 100);
     let nota;
     if (random >= 1 && random <= 25) {
-      nota = "Creo que no es homo.";
+      nota =
+        "¡No hay nada de malo en ser un poquito homo! ¡Sigue siendo tú mismo!";
     } else if (random <= 50 && random >= 26) {
-      nota = "Quizás es un poco homo.";
+      nota =
+        "¡Eres una persona increíblemente diversa y eso es genial! ¡Abraza tu lado homo!";
     } else if (random <= 75 && random >= 51) {
-      nota = "Creo que debería replantearselo.";
+      nota =
+        "¡Eres una persona diversa y eso es genial! Explora tus intereses y sé feliz con lo que te hace feliz. No te preocupes por lo que piensen los demás, solo haz lo que te haga feliz";
     } else if (random <= 99 && random >= 76) {
       nota =
-        "Debería de ir a cambiarse el nombre al sexo contrario. <:huh:1097983950485467246>";
+        "¡Vamos, tú eres la fiesta! ¡Demuestra al mundo tu orgullo y sé quien eres!";
     } else if (random == 0) {
-      nota = "No se por qué, pero creo que no es homo.";
+      nota =
+        "¡No pasa nada! La orientación sexual es una parte de ti, pero no te define como persona. ¡Eres genial tal y como eres!";
     } else if (random == 100) {
-      nota = "Dicen que viene con sorpresa.";
+      nota =
+        "¡Increíble! Eres una persona única y especial. ¡Sigue siendo tú mismo y nunca dejes que nadie te diga lo contrario!";
     }
     const embed = new EmbedBuilder()
       .setAuthor({
