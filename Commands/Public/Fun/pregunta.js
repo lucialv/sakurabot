@@ -49,12 +49,23 @@ module.exports = {
     let respuesta = Math.floor(Math.random() * replies.length);
     const embed = new EmbedBuilder()
       .setColor("#cc96c1")
-      .setDescription(
-        `${interaction.member} me hace una pregunta <a:happy_girl_moving:1097577244441985064> \n\n<:flecha:1097547930237407242> Pregunta: **${pregunta}**\n\n<:flecha:1097547930237407242> Respuesta: **${replies[respuesta]}**`
-      )
+      // .setDescription(
+      //   `${interaction.member} me hace una pregunta <a:happy_girl_moving:1097577244441985064> \n\n<:flecha:1097547930237407242> Pregunta: **${pregunta}**\n\n<:flecha:1097547930237407242> Respuesta: **${replies[respuesta]}**`
+      // )
       .setAuthor({
-        name: client.user.username,
+        name: `Comando pregunta`,
         iconURL: client.user.displayAvatarURL(),
+      })
+      .setTitle(
+        `<:flecha:1097547930237407242> ${Target.username}? Me hace una pregunta... <:SagiriShy:1097980889729863801> `
+      )
+      .addFields({
+        name: `• Pregunta`,
+        value: `> ${pregunta} <a:HeartsBubblePink:1097980344818470985>`,
+      })
+      .addFields({
+        name: `• Respuesta`,
+        value: `> ${replies[respuesta]}`,
       })
       .setThumbnail("attachment://question.png")
       .setTimestamp(Date.now())
