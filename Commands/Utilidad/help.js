@@ -5,6 +5,7 @@ const {
   ActionRowBuilder,
   StringSelectMenuBuilder,
   Client,
+  AttachmentBuilder,
   ButtonBuilder,
 } = require("discord.js");
 
@@ -12,9 +13,8 @@ const fs = require("fs");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("ayuda")
-    .setDescription("Discord bot manual."),
-
+    .setName("help")
+    .setDescription("¡Muestra los comandos disponibles del bot!"),
   /**
    *
    * @param {ChatInputCommandInteraction} interaction
@@ -22,10 +22,10 @@ module.exports = {
    */
   async execute(interaction, client) {
     const folderEmojis = {
-      Fun: "1097524969589719070",
-      Moderation: "1097524969589719070",
-      Utils: "1097524969589719070",
-      Developer: "1097524969589719070",
+      Diversión: "1097980889729863801",
+      Moderación: "1097524751594954792",
+      Utilidad: "1097524969589719070",
+      Developer: "1097524725464432750",
       // Input your folder name and emoji ID.
       // example. Admin: "123456789"
       // Where Admin is the folder name and 123456789 is the emoji ID.
@@ -33,10 +33,20 @@ module.exports = {
       // Admin: "123456789",
       // Audio: "123456789",
     };
-
     const embedMsg = new EmbedBuilder()
-      .setDescription(`Hi`) // Set your main embed description.
-      .setThumbnail(interaction.client.user.displayAvatarURL())
+      .setAuthor({
+        name: `Comando Help`,
+        iconURL: client.user.displayAvatarURL(),
+      })
+      .setTimestamp()
+      .setFooter({
+        text: `Solicitado por: ${interaction.user.username}`,
+        iconURL: interaction.user.displayAvatarURL(),
+      })
+      .setDescription(
+        "Esta es mi lista de comandos por ahora <:ghostHeart:1097558572872765480>"
+      ) // Set your main embed description.
+      .setImage("https://i.imgur.com/aPly5sy.png")
       .setColor("#cc96c1"); // Set your embed color.
 
     let helpMenu = new ActionRowBuilder().addComponents(
@@ -47,12 +57,12 @@ module.exports = {
         .setPlaceholder("Select a category") // Set your select menu place holder text. For example, "Select a category".
     );
 
-    fs.readdirSync("./Commands/Public").forEach((command) => {
+    fs.readdirSync("./Commands").forEach((command) => {
       // Add your Command folder destination. Remember, this destination is from index.
       helpMenu.components[0].addOptions({
         // So if your Command folder is in Source/Command, your destination will be
         label: `${command}`, // "./Source/Command"
-        description: `Command list for ${command}.`,
+        description: `Lista de comandos para ${command}.`,
         value: `${command}`,
         emoji: folderEmojis[command]
           ? { id: folderEmojis[command], name: "" } // Leave this as it is.
@@ -66,22 +76,22 @@ module.exports = {
 
     const homeButton = new ButtonBuilder()
       .setCustomId("homeButton")
-      .setLabel("Home")
+      .setLabel("Inicio")
       .setStyle("Primary");
 
     const reportButton = new ButtonBuilder()
       .setCustomId("reportButton")
-      .setLabel("Report")
+      .setLabel("Reportar")
       .setStyle("Primary");
 
     const inviteButton = new ButtonBuilder()
       .setCustomId("inviteButton")
-      .setLabel("Invite")
-      .setStyle("Primary");
+      .setLabel("Invitar")
+      .setStyle("Secondary");
 
     const deleteButton = new ButtonBuilder()
       .setCustomId("deleteButton")
-      .setLabel("Delete")
+      .setLabel("✘")
       .setStyle("Danger");
 
     interaction.reply({
@@ -110,9 +120,9 @@ module.exports = {
           components: [
             helpMenu,
             new ActionRowBuilder().addComponents(
-              homeButton,
-              reportButton,
-              inviteButton,
+              homeButton.setDisabled(false),
+              reportButton.setDisabled(false),
+              inviteButton.setDisabled(false),
               deleteButton
             ),
           ],
@@ -120,33 +130,33 @@ module.exports = {
       } else if (interaction.customId === "reportButton") {
         const reportEmbed = new EmbedBuilder()
           .setDescription(
-            `Direct message **evoke** if you would like to report any errors or bugs. The developer will reach back to you as soon as possible.`
+            `¡**DM** <@997571433280577656> si quieres reportar algún bug!`
           )
           .setThumbnail(interaction.client.user.displayAvatarURL())
-          .setColor(0x2b2d31);
+          .setColor("#cc96c1");
 
         interaction.update({
           embeds: [reportEmbed],
           components: [
             helpMenu,
             new ActionRowBuilder().addComponents(
-              homeButton,
-              reportButton,
-              inviteButton,
+              homeButton.setDisabled(false),
+              reportButton.setDisabled(true),
+              inviteButton.setDisabled(false),
               deleteButton
             ),
           ],
         });
       } else if (interaction.customId === "inviteButton") {
-        const inviteLink = `https://discord.com/api/oauth2/authorize?client_id=1084328077447929907&permissions=8&scope=bot`;
+        const inviteLink = `https://discord.com/api/oauth2/authorize?client_id=1060206122620960768&permissions=8&scope=bot`;
 
         const inviteEmbed = new EmbedBuilder()
           .setDescription(
-            `Use the link below to invite me to your server. I do require **Administration** permission for better functionality. However, you can set my permissions as you want.` +
-              `\n\nClick [here](${inviteLink}) to invite.`
+            `Utiliza el siguiente enlace para invitarme a su servidor. Necesito permiso de **Administrador** para una mejor funcionalidad. Sin embargo, puede configurar mis permisos como desee.` +
+              `\n\nClick [aquí](${inviteLink}) para invitar`
           )
           .setThumbnail(interaction.client.user.displayAvatarURL())
-          .setColor(0x2b2d31);
+          .setColor("#cc96c1");
 
         interaction.update({
           embeds: [inviteEmbed],
@@ -154,8 +164,8 @@ module.exports = {
             helpMenu,
             new ActionRowBuilder().addComponents(
               homeButton,
-              reportButton,
-              inviteButton,
+              reportButton.setDisabled(false),
+              inviteButton.setDisabled(true),
               deleteButton
             ),
           ],
@@ -173,7 +183,3 @@ module.exports = {
     });
   },
 };
-
-// Below is the event file for the /help command. Make a new file in your Event folder and paste it there.
-// You can paste it in your event file too but it's all based on how your package is set up.
-// I left all the file as it is, edit to your liking.

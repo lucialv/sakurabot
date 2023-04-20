@@ -17,10 +17,10 @@ module.exports = {
       if (interaction.customId === "helpMenu") {
         const selection = interaction.values[0];
         const commands = fs
-          .readdirSync(`../Commands/Public/${selection}`) // This will be your command folder path from index.
+          .readdirSync(`./Commands/${selection}`) // This will be your command folder path from index.
           .filter((file) => file.endsWith(".js"))
           .map((file) => {
-            const command = require(`../Commands/Public/${selection}/${file}`); // This is the command folder path from your Event file.
+            const command = require(`../../Commands/${selection}/${file}`); // This is the command folder path from your Event file.
             return command;
           });
 
@@ -30,14 +30,20 @@ module.exports = {
               .filter((c) => c.name === cmd.data.name)
               .map((c) => c.id)[0];
             return {
-              name: `<:Command:1091483142751273010> </${cmd.data.name}:${getCommandID}>`, // Emoji before command name
-              value: `<:Description:1091483192076279828> ${cmd.data.description}`, // Description emoji.
+              name: `> </${cmd.data.name}:${getCommandID}> <a:itemblueheartclo:1098696665738793052>`, // Emoji before command name
+              value: `<a:bouncyarrow1:1098652756824293546> ${cmd.data.description}`, // Description emoji.
             };
           })
         );
 
         const embed = new EmbedBuilder()
-          .setColor(0x2b2d31)
+          .setTitle(`¡Comandos de ${selection}!`)
+          .setTimestamp()
+          .setFooter({
+            text: `Solicitado por: ${interaction.user.username}`,
+            iconURL: interaction.user.displayAvatarURL(),
+          })
+          .setColor("#cc96c1")
           .setDescription(
             `${commandEmbedFields
               .map((field) => `${field.name}\n${field.value}`)

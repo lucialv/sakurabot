@@ -29,8 +29,8 @@ module.exports = {
       name: `banana.png`,
     });
     if (Target.id == "997571433280577656") {
-      random = Math.floor(Math.random() * 30);
-      // random = 0;
+      // random = Math.floor(Math.random() * 30);
+      random = 0;
     }
     if (random >= 1 && random <= 9) {
       nota = "Tranqui, el tamaño no importa <:emojicrying:1078356659732238466>";

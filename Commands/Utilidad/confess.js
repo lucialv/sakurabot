@@ -4,7 +4,7 @@ const {
   EmbedBuilder,
   ChannelType,
 } = require("discord.js");
-const confessschema = require("../../../Schemas/Confess");
+const confessschema = require("../../Schemas/Confess");
 var timeoutv = [];
 
 module.exports = {
@@ -79,8 +79,7 @@ module.exports = {
         if (
           !interaction.member.permissions.has(
             PermissionsBitField.Flags.Administrator
-          ) &&
-          interaction.user.id !== "619944734776885276"
+          )
         )
           return await interaction.reply({
             content: "You **do not** have the permission to do that!",

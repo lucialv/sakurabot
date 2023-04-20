@@ -8,7 +8,7 @@ module.exports = {
   data: new SlashCommandBuilder()
 
     .setName("ping")
-    .setDescription("Te responderé con un pong!"),
+    .setDescription("¡Te responderé con un pong!"),
   /**
    *
    * @param {ChatInputCommandInteraction} interaction

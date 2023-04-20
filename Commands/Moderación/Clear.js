@@ -8,7 +8,7 @@ const {
 
 const Transcripts = require("discord-html-transcripts");
 const { options } = require("mongoose/lib/utils");
-const database = require("../../../Schemas/MemberLog");
+const database = require("../../Schemas/MemberLog");
 
 module.exports = {
   data: new SlashCommandBuilder()

@@ -3,7 +3,7 @@ const {
   PermissionsBitField,
   SlashCommandBuilder,
 } = require("discord.js");
-const staffschema = require("../../../Schemas/staffrole");
+const staffschema = require("../../Schemas/staffrole");
 
 module.exports = {
   data: new SlashCommandBuilder()
